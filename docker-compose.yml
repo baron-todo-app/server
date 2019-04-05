@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  app_db:
+    image: mysql:5.7.24
+    container_name: app_db
+    hostname: app_db
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+
+  #  app_api:
+  #    image: node:11.10.1
+  #    container_name: app_api
+  #    hostname: app_api
+  #    tty: true # コンテナが起動し続ける
+  #    command: [sh, -c, "npm install && npm run start:dev"]
+  #    ports:
+  #      - 3000:3000
+  #    volumes:
+  #      - ./:/app
+  #    working_dir: /app
+
+  #  https://qiita.com/ryo-ohnishi/items/f4db6b1a6161a54eebd9
+  #    links:
+  #      - app_db
+
+
+  schemaspy:
+    image: schemaspy/schemaspy
+    volumes:
+      - ./doc/schemaspy:/output
+      - ./docker/schemaspy/config:/config
+      - ./doc/schemaspy:/usr/share/nginx/html:ro
+    container_name: "schemaspy_local"
+    command: ["-configFile", "/config/schemaspy.properties"]
+
