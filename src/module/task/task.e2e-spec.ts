@@ -10,8 +10,8 @@ import { message } from 'config';
 import { TaskObject } from './dto';
 import gql from 'graphql-tag';
 import { print } from 'graphql/language/printer';
-import { Query, Task } from 'share/graphql.type';
-import { getTasks } from 'share/gqlRepository/task';
+import { Query, Task, Mutation } from 'share/graphql.type';
+import { getTasksQ, getTaskQ, addTaskQ, deleteTaskQ, updateTaskQ } from 'share/gqlRepository/task';
 
 const { freeWord, addTask } = message.dto.task;
 
@@ -69,14 +69,14 @@ describe('task (e2e)', () => {
   async function addTaskUnit(): Promise<TaskObject> {
     const title = 'foo';
     const body = 'bar';
-    const query = gql`mutation { addTask(AddTask: {title: "${title}", body: "${body}" })  { id title body }  }`;
-    const r = await callGQL(query);
+    const query = addTaskQ({ title, body });
+    const data: Pick<Mutation, 'addTask'> = (await callGQL(query)).body.data;
 
-    expect(r.body.data.addTask).toMatchObject({
+    expect(data.addTask).toMatchObject({
       title,
       body,
     });
-    return r.body.data.addTask;
+    return data.addTask;
   }
 
   /**
@@ -85,107 +85,62 @@ describe('task (e2e)', () => {
    */
   async function softDeleteTaskUnit(): Promise<TaskObject> {
     const { id, title, body } = await addTaskUnit();
-    const query = gql`mutation { deleteTask(DeleteTask: {id: ${id} }) {id title body} }`;
-    const r = await callGQL(query);
+    const query = deleteTaskQ({ id });
+    const data: Pick<Mutation, 'deleteTask'> = (await callGQL(query)).body.data;
 
-    expect(r.body.data.deleteTask).toMatchObject({
+    expect(data.deleteTask).toMatchObject({
       id,
       title,
       body,
     });
-    return r.body.data.deleteTask;
+    return data.deleteTask;
   }
 
   describe('getTask', () => {
     it('取得', async () => {
       const id = 2;
-      const query = gql`query{ getTask(GetTask: {id: ${id} }) { id  title body } }`;
-      const r = await callGQL(query);
+      const query = getTaskQ({ id });
+      const data: Pick<Query, 'getTask'> = (await callGQL(query)).body.data;
       const adjust = 1; // arrayは 0 スタートだが DBのidは1からの為 ズレの調整
       const e = { id, ...todoEntityFixture[id - adjust] };
-      expect(r.body.data.getTask).toMatchObject(e);
+      expect(data.getTask).toMatchObject(e);
     });
 
     it('論理削除済', async () => {
-      const query = gql`
-        query {
-          getTask(GetTask: { id: 1 }) {
-            id
-            title
-            body
-          }
-        }
-      `;
-      const r = await callGQL(query);
-      expectNothing(r);
-    });
+      const r: Array<keyof Task> = ['id', 'title', 'body'];
+      const query = getTaskQ({ id: 1 }, r);
+      const r2 = await callGQL(query);
 
-    it('パラメタ不備', async () => {
-      const query = gql`
-        query {
-          getTask(GetTask: { id: "a" }) {
-            id
-            title
-            body
-          }
-        }
-      `;
-      const r = await callGQL(query);
-      expect(r.error).toBeDefined();
+      expectNothing(r2);
     });
 
     it('対象データ無し', async () => {
-      const query = gql`
-        query {
-          getTask(GetTask: { id: 0 }) {
-            id
-            title
-            body
-          }
-        }
-      `;
+      const query = getTaskQ({ id: 0 });
       const r = await callGQL(query);
       expectNothing(r);
     });
   });
 
   describe('getTasks', () => {
-    // --------------------------------
-    it('xx', async () => {
-      const r: Array<keyof Task> = ['id', 'title', 'body'];
-      const query = getTasks({ txt: '' }, r);
-      const data: Pick<Query, 'getTasks'> = (await callGQL(query)).body.data;
-      console.log(data.getTasks[0]);
-    });
-    // --------------------------------
-
     it('取得', async () => {
-      const query = gql`
-        query {
-          getTasks(FreeWord: { txt: "" }) {
-            id
-            title
-            body
-          }
-        }
-      `;
-      const r = await callGQL(query);
+      const query = getTasksQ({ txt: '' });
+      const data: Pick<Query, 'getTasks'> = (await callGQL(query)).body.data;
       const adjust = 1; // 論理削除分
-      expect(r.body.data.getTasks.length).toBeGreaterThanOrEqual(
+      expect(data.getTasks.length).toBeGreaterThanOrEqual(
         todoEntityFixture.length - adjust,
       );
     });
 
     it('論理削除済', async () => {
       const txt = 'ゴミ捨て';
-      const query = gql`query{ getTasks(FreeWord: {txt: "${txt}" }) { id  title body } }`;
+      const query = getTasksQ({ txt });
       const r = await callGQL(query);
       expectEmpty(r);
     });
 
     it('対象データ無し', async () => {
       const txt = 'xxxxxxxxxxxxxxxx';
-      const query = gql`query{ getTasks(FreeWord: {txt: "${txt}" }) { id  title body } }`;
+      const query = getTasksQ({ txt });
       const r = await callGQL(query);
       expectEmpty(r);
     });
@@ -193,15 +148,14 @@ describe('task (e2e)', () => {
     it('文字数オーバー', async () => {
       const txt =
         'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
-      const query = gql`query{ getTasks(FreeWord: {txt: "${txt}"}) { id  title body } }`;
-
+      const query = getTasksQ({ txt });
       const r = await callGQL(query);
       const { property, constraints } = _.get(r, errPath);
       expect(property).toBe('txt');
       expect(constraints).toMatchObject({
         maxLength: `${todoEntityCnf.body.length}${
           freeWord.txt.maxLength.message
-        }`,
+          }`,
       });
     });
   });
@@ -231,57 +185,57 @@ describe('task (e2e)', () => {
       expect(constraints).toMatchObject({
         maxLength: `${todoEntityCnf.title.length}${
           addTask.title.maxLength.message
-        }`,
+          }`,
       });
     });
 
     it('追加失敗2', async () => {
-      const txt = 'abc';
+      const title = 'abc';
       const body =
         'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
-      const query = gql`mutation { addTask(AddTask: {title: "${txt}", body: "${body}" })  { title body }  }`;
+      const query = addTaskQ({ title, body });
       const r = await callGQL(query);
       const { property, constraints } = _.get(r, errPath);
       expect(property).toBe('body');
       expect(constraints).toMatchObject({
         maxLength: `${todoEntityCnf.body.length}${
           addTask.body.maxLength.message
-        }`,
+          }`,
       });
     });
 
     it('追加失敗3', async () => {
-      const txt =
+      const title =
         'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
       const body =
         'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
-      const query = gql`mutation { addTask(AddTask: {title: "${txt}", body: "${body}" })  { title body }  }`;
+      const query = addTaskQ({ title, body });
       const r = await callGQL(query);
       const { property, constraints } = _.get(r, errPath);
       expect(property).toBe('title');
       expect(constraints).toMatchObject({
         maxLength: `${todoEntityCnf.title.length}${
           addTask.title.maxLength.message
-        }`,
+          }`,
       });
       expect(r.body.errors[0].message.message[1].property).toBe('body');
       expect(r.body.errors[0].message.message[1].constraints).toMatchObject({
         maxLength: `${todoEntityCnf.body.length}${
           addTask.body.maxLength.message
-        }`,
+          }`,
       });
     });
 
     describe('updateTask', () => {
       it('更新', async () => {
         const { id } = await addTaskUnit();
-
         const title2 = 'foo2';
         const body2 = 'bar2';
-        const query = gql`mutation { updateTask(UpdateTask: {id: ${id} title: "${title2}", body: "${body2}" })  { id title body }  }`;
+
+        const query = updateTaskQ({ id, title: title2, body: body2 });
         const r = await callGQL(query);
 
         expect(r.body.data.updateTask).toMatchObject({
@@ -293,7 +247,7 @@ describe('task (e2e)', () => {
 
       it('更新失敗', async () => {
         const { id, title, body } = await softDeleteTaskUnit();
-        const query = gql`mutation { updateTask(UpdateTask: {id: ${id} title: "${title}", body: "${body}" })  { id title body }  }`;
+        const query = updateTaskQ({ id, title, body });
         const r = await callGQL(query);
         expectNothing(r);
       });
@@ -308,7 +262,8 @@ describe('task (e2e)', () => {
         const { id } = await softDeleteTaskUnit();
 
         // 上で削除したデータを再度削除
-        const query = gql`mutation { deleteTask(DeleteTask: {id: ${id} }) {id title body} }`;
+        const query = deleteTaskQ({ id });
+
         const r = await callGQL(query);
         expectNothing(r);
       });
