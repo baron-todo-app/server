@@ -1,0 +1,730 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>server documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">server documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-typealiases">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Type aliases</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#AddTask" title="src/share/graphql.type.ts"><b>AddTask</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DeleteTask" title="src/share/graphql.type.ts"><b>DeleteTask</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DirectiveResolverFn" title="src/share/graphql.type.ts"><b>DirectiveResolverFn</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FreeWord" title="src/share/graphql.type.ts"><b>FreeWord</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GetTask" title="src/share/graphql.type.ts"><b>GetTask</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#IResolvers" title="src/share/graphql.type.ts"><b>IResolvers</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Maybe" title="src/share/graphql.type.ts"><b>Maybe</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Mutation" title="src/share/graphql.type.ts"><b>Mutation</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MutationAddTaskArgs" title="src/share/graphql.type.ts"><b>MutationAddTaskArgs</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MutationDeleteTaskArgs" title="src/share/graphql.type.ts"><b>MutationDeleteTaskArgs</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MutationResolvers" title="src/share/graphql.type.ts"><b>MutationResolvers</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MutationUpdateTaskArgs" title="src/share/graphql.type.ts"><b>MutationUpdateTaskArgs</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NextResolverFn" title="src/share/graphql.type.ts"><b>NextResolverFn</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Query" title="src/share/graphql.type.ts"><b>Query</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QueryGetTaskArgs" title="src/share/graphql.type.ts"><b>QueryGetTaskArgs</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QueryGetTasksArgs" title="src/share/graphql.type.ts"><b>QueryGetTasksArgs</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#QueryResolvers" title="src/share/graphql.type.ts"><b>QueryResolvers</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Resolver" title="src/share/graphql.type.ts"><b>Resolver</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ResolverFn" title="src/share/graphql.type.ts"><b>ResolverFn</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Resolvers" title="src/share/graphql.type.ts"><b>Resolvers</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Scalars" title="src/share/graphql.type.ts"><b>Scalars</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StitchingResolver" title="src/share/graphql.type.ts"><b>StitchingResolver</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SubscriptionResolveFn" title="src/share/graphql.type.ts"><b>SubscriptionResolveFn</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SubscriptionResolver" title="src/share/graphql.type.ts"><b>SubscriptionResolver</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SubscriptionSubscribeFn" title="src/share/graphql.type.ts"><b>SubscriptionSubscribeFn</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Task" title="src/share/graphql.type.ts"><b>Task</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TaskResolvers" title="src/share/graphql.type.ts"><b>TaskResolvers</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TaskResolverType" title="src/module/task/Task.resolvers.ts"><b>TaskResolverType</b>&nbsp;&nbsp;&nbsp;(src/.../Task.resolvers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TaskServiceType" title="src/module/task/Task.service.ts"><b>TaskServiceType</b>&nbsp;&nbsp;&nbsp;(src/.../Task.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TypeResolveFn" title="src/share/graphql.type.ts"><b>TypeResolveFn</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UpdateTask" title="src/share/graphql.type.ts"><b>UpdateTask</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.type.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/share/graphql.type.ts</h3>
+    <section>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AddTask"></a>
+                    <span class="name"><b>AddTask</b><a href="#AddTask"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DeleteTask"></a>
+                    <span class="name"><b>DeleteTask</b><a href="#DeleteTask"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DirectiveResolverFn"></a>
+                    <span class="name"><b>DirectiveResolverFn</b><a href="#DirectiveResolverFn"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FreeWord"></a>
+                    <span class="name"><b>FreeWord</b><a href="#FreeWord"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>返却値の<code>String</code>が対象 高付加 &amp; レスポンスが遅いので利用は計画的に!! </p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetTask"></a>
+                    <span class="name"><b>GetTask</b><a href="#GetTask"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="IResolvers"></a>
+                    <span class="name"><b>IResolvers</b><a href="#IResolvers"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Resolvers&lt;Context&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Maybe"></a>
+                    <span class="name"><b>Maybe</b><a href="#Maybe"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>T | null</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Mutation"></a>
+                    <span class="name"><b>Mutation</b><a href="#Mutation"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MutationAddTaskArgs"></a>
+                    <span class="name"><b>MutationAddTaskArgs</b><a href="#MutationAddTaskArgs"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MutationDeleteTaskArgs"></a>
+                    <span class="name"><b>MutationDeleteTaskArgs</b><a href="#MutationDeleteTaskArgs"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MutationResolvers"></a>
+                    <span class="name"><b>MutationResolvers</b><a href="#MutationResolvers"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MutationUpdateTaskArgs"></a>
+                    <span class="name"><b>MutationUpdateTaskArgs</b><a href="#MutationUpdateTaskArgs"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NextResolverFn"></a>
+                    <span class="name"><b>NextResolverFn</b><a href="#NextResolverFn"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Query"></a>
+                    <span class="name"><b>Query</b><a href="#Query"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QueryGetTaskArgs"></a>
+                    <span class="name"><b>QueryGetTaskArgs</b><a href="#QueryGetTaskArgs"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QueryGetTasksArgs"></a>
+                    <span class="name"><b>QueryGetTasksArgs</b><a href="#QueryGetTasksArgs"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="QueryResolvers"></a>
+                    <span class="name"><b>QueryResolvers</b><a href="#QueryResolvers"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Resolver"></a>
+                    <span class="name"><b>Resolver</b><a href="#Resolver"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>ResolverFn&lt;TResult | TParent | TContext | TArgs&gt; | StitchingResolver&lt;TResult | TParent | TContext | TArgs&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ResolverFn"></a>
+                    <span class="name"><b>ResolverFn</b><a href="#ResolverFn"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Resolvers"></a>
+                    <span class="name"><b>Resolvers</b><a href="#Resolvers"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Scalars"></a>
+                    <span class="name"><b>Scalars</b><a href="#Scalars"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>All built-in and custom scalars, mapped to their actual values </p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StitchingResolver"></a>
+                    <span class="name"><b>StitchingResolver</b><a href="#StitchingResolver"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SubscriptionResolveFn"></a>
+                    <span class="name"><b>SubscriptionResolveFn</b><a href="#SubscriptionResolveFn"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SubscriptionResolver"></a>
+                    <span class="name"><b>SubscriptionResolver</b><a href="#SubscriptionResolver"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../interfaces/SubscriptionResolverObject.html" target="_self" > | SubscriptionResolverObject&lt;TResult | TParent | TContext | TArgs&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SubscriptionSubscribeFn"></a>
+                    <span class="name"><b>SubscriptionSubscribeFn</b><a href="#SubscriptionSubscribeFn"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Task"></a>
+                    <span class="name"><b>Task</b><a href="#Task"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Task の詳細情報 </p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TaskResolvers"></a>
+                    <span class="name"><b>TaskResolvers</b><a href="#TaskResolvers"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TypeResolveFn"></a>
+                    <span class="name"><b>TypeResolveFn</b><a href="#TypeResolveFn"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UpdateTask"></a>
+                    <span class="name"><b>UpdateTask</b><a href="#UpdateTask"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/module/task/Task.resolvers.ts</h3>
+    <section>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TaskResolverType"></a>
+                    <span class="name"><b>TaskResolverType</b><a href="#TaskResolverType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../interfaces/ICRUDResolver.html" target="_self" >ICRUDResolver&lt;TaskObject&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/module/task/Task.service.ts</h3>
+    <section>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TaskServiceType"></a>
+                    <span class="name"><b>TaskServiceType</b><a href="#TaskServiceType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../interfaces/ICRUDService.html" target="_self" >ICRUDService&lt;TaskObject | TodoEntity&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-typealiases';
+            var COMPODOC_CURRENT_PAGE_URL = 'typealiases.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

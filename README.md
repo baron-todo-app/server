@@ -149,7 +149,8 @@ drop database task; create database task;
 - mysql
   - docker-compose up app_db schemaspy
 - compodoc
-  - npx compodoc -p tsconfig.json -d doc/compodoc
+  - yarn compodoc -p tsconfig.json -d doc/compodoc
+  - yarn compodoc -p tsconfig.json -s # サーバ起動
 ---
 
 
