@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TodoEntity } from 'entities/Todo.entity';
-import { Repository } from 'typeorm';
+import { Repository, Brackets } from 'typeorm';
 import { GetTask, FreeWord, AddTask, UpdateTask } from './dto';
 import { plainToClass } from 'class-transformer';
 import { TaskObject } from './dto';
@@ -33,10 +33,14 @@ class TaskService implements TaskServiceType {
   }
 
   findTasks(p: FreeWord) {
-    const where = this.makeWare(p);
-    return (this.todo.find({
-      where: { ...where, ...this.appService.throughDelete() },
-    }) as any) as TaskObject[];
+    const condition = this.makeWare(p)
+    return this.todo.createQueryBuilder()
+      .where('deleteAt is NUll')
+      .andWhere(new Brackets(qb => {
+        qb.where('title like :title', {title: condition})
+          .orWhere('body like :body', {body: condition});
+      }))
+      .getMany() as any  as TaskObject[];
   }
 
   async addTask(p: AddTask) {
@@ -56,14 +60,9 @@ class TaskService implements TaskServiceType {
 
   private makeWare(p: FreeWord) {
     if (p.txt === '') {
-      return [];
+      return '%';
     }
-    const condition = this.appService.makeLike(p.txt);
-    // classのpropertyをなめて、抽出可能だが省略
-    return {
-      title: condition,
-      body: condition,
-    };
+    return this.appService.makeLike(p.txt);
   }
 
   private async safeSave(v: TodoEntity): Promise<TaskObject> {

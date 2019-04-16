@@ -1,5 +1,6 @@
 export { ISoftDelete };
+import {FindOperator} from 'typeorm';
 
 interface ISoftDelete {
-  deleteAt: Date | null;
+  deleteAt: Date | FindOperator<any>;
 }

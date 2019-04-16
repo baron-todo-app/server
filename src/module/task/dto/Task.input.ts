@@ -8,7 +8,7 @@ import {
   IsNotEmpty,
 } from 'class-validator';
 import { message } from 'config';
-import { todoEntityCnf } from '../../../entities/Todo.entity';
+import { config } from 'share/config';
 
 const { getTask, freeWord, addTask } = message.dto.task;
 
@@ -39,8 +39,8 @@ class AddTask {
   @IsNotEmpty({
     message: `${addTask.title.isNotEmpty.message}`,
   })
-  @MaxLength(todoEntityCnf.title.length, {
-    message: `${todoEntityCnf.title.length}${addTask.title.maxLength.message}`,
+  @MaxLength(config.todoEntity.title.length, {
+    message: `${config.todoEntity.title.length}${addTask.title.maxLength.message}`,
   })
   title: string;
 
@@ -52,8 +52,8 @@ class AddTask {
   @IsString({
     message: addTask.body.isString.message,
   })
-  @MaxLength(todoEntityCnf.body.length, {
-    message: `${todoEntityCnf.body.length}${addTask.body.maxLength.message}`,
+  @MaxLength(config.todoEntity.body.length, {
+    message: `${config.todoEntity.body.length}${addTask.body.maxLength.message}`,
   })
   body?: string;
 }
@@ -66,8 +66,8 @@ class FreeWord {
   @Field({
     description: '`xxx like %txt%` になる  `txt: ""` で全件取得',
   })
-  @MaxLength(todoEntityCnf.body.length, {
-    message: `${todoEntityCnf.body.length}${freeWord.txt.maxLength.message}`,
+  @MaxLength(config.todoEntity.body.length, {
+    message: `${config.todoEntity.body.length}${freeWord.txt.maxLength.message}`,
   })
   txt: string;
 }
@@ -92,8 +92,8 @@ class UpdateTask {
   @IsString({
     message: addTask.title.isString.message,
   })
-  @MaxLength(todoEntityCnf.title.length, {
-    message: `${todoEntityCnf.title.length}${addTask.title.maxLength.message}`,
+  @MaxLength(config.todoEntity.title.length, {
+    message: `${config.todoEntity.title.length}${addTask.title.maxLength.message}`,
   })
   title: string;
 
@@ -105,8 +105,8 @@ class UpdateTask {
   @IsString({
     message: addTask.body.isString.message,
   })
-  @MaxLength(todoEntityCnf.body.length, {
-    message: `${todoEntityCnf.body.length}${addTask.body.maxLength.message}`,
+  @MaxLength(config.todoEntity.body.length, {
+    message: `${config.todoEntity.body.length}${addTask.body.maxLength.message}`,
   })
   body?: string;
 }

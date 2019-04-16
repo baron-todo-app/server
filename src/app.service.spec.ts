@@ -1,5 +1,6 @@
 import { AppService } from './app.service';
 import { Test, TestingModule } from '@nestjs/testing';
+import {IsNull} from 'typeorm';
 
 describe('AppService', () => {
   let service: AppService;
@@ -13,28 +14,28 @@ describe('AppService', () => {
   });
 
   it('throughDelete', () => {
-    expect(service.throughDelete()).toMatchObject({ deleteAt: null });
+    expect(service.throughDelete()).toMatchObject({ deleteAt: IsNull() });
   });
 
   it('makeLike', () => {
-    expect(service.makeLike('a').value).toBe('%a%');
-    expect(service.makeLike('').value).toBe('%%');
-    expect(service.makeLike('100%').value).toBe('%100\\%%');
-    expect(service.makeLike('100_').value).toBe('%100\\_%');
-    expect(service.makeLike('100\\').value).toBe('%100\\\\%');
+    expect(service.makeLike('a')).toBe('%a%');
+    expect(service.makeLike('')).toBe('%%');
+    expect(service.makeLike('100%')).toBe('%100\\%%');
+    expect(service.makeLike('100_')).toBe('%100\\_%');
+    expect(service.makeLike('100\\')).toBe('%100\\\\%');
 
-    expect(service.makeLike('%').value).toBe('%\\%%');
-    expect(service.makeLike('%%').value).toBe('%\\%\\%%');
-    expect(service.makeLike('%%%').value).toBe('%\\%\\%\\%%');
+    expect(service.makeLike('%')).toBe('%\\%%');
+    expect(service.makeLike('%%')).toBe('%\\%\\%%');
+    expect(service.makeLike('%%%')).toBe('%\\%\\%\\%%');
 
-    expect(service.makeLike('_').value).toBe('%\\_%');
-    expect(service.makeLike('__').value).toBe('%\\_\\_%');
-    expect(service.makeLike('___').value).toBe('%\\_\\_\\_%');
+    expect(service.makeLike('_')).toBe('%\\_%');
+    expect(service.makeLike('__')).toBe('%\\_\\_%');
+    expect(service.makeLike('___')).toBe('%\\_\\_\\_%');
 
-    expect(service.makeLike('\\').value).toBe('%\\\\%');
-    expect(service.makeLike('\\\\').value).toBe('%\\\\\\\\%');
-    expect(service.makeLike('\\\\\\').value).toBe('%\\\\\\\\\\\\%');
+    expect(service.makeLike('\\')).toBe('%\\\\%');
+    expect(service.makeLike('\\\\')).toBe('%\\\\\\\\%');
+    expect(service.makeLike('\\\\\\')).toBe('%\\\\\\\\\\\\%');
 
-    expect(service.makeLike('%_\\').value).toBe('%\\%\\_\\\\%');
+    expect(service.makeLike('%_\\')).toBe('%\\%\\_\\\\%');
   });
 });

@@ -1,11 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TaskService } from './Task.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { TodoEntity, todoEntityCnf } from 'entities/Todo.entity';
-import { GetTask, FreeWord, UpdateTask, DeleteTask } from './dto';
+import { TodoEntity } from 'entities/Todo.entity';
+import { GetTask, FreeWord, UpdateTask } from './dto';
 import { AppService } from 'app.service';
 import * as _ from 'lodash';
 import { message } from 'config/message';
+import { config } from 'share/config';
 
 const { todo } = message.entity;
 
@@ -35,11 +36,6 @@ describe('TaskService', () => {
     expect(service.findOneTask({ id: 10 })).toBeTruthy();
   });
 
-  it('findTasks', () => {
-    expect(service.findTasks({ txt: '' })).toBeTruthy();
-    expect(service.findTasks({ txt: 'foo' })).toBeTruthy();
-  });
-
   describe('addTask', () => {
     it('ok', async () => {
       const r = await service.addTask({ title: 'ok', body: '' });
@@ -56,7 +52,7 @@ describe('TaskService', () => {
         const { property, constraints } = _.get(e, errPath);
         expect(property).toBe('title');
         expect(constraints).toMatchObject({
-          maxLength: `${todoEntityCnf.title.length}${
+          maxLength: `${config.todoEntity.title.length}${
             todo.title.maxLength.message
           }`,
         });
@@ -88,7 +84,7 @@ describe('TaskService', () => {
         const { property, constraints } = _.get(e, errPath);
         expect(property).toBe('body');
         expect(constraints).toMatchObject({
-          maxLength: `${todoEntityCnf.body.length}${
+          maxLength: `${config.todoEntity.body.length}${
             todo.body.maxLength.message
           }`,
         });
@@ -121,7 +117,7 @@ describe('TaskService', () => {
         const { property, constraints } = _.get(e, errPath);
         expect(property).toBe('title');
         expect(constraints).toMatchObject({
-          maxLength: `${todoEntityCnf.title.length}${
+          maxLength: `${config.todoEntity.title.length}${
             todo.title.maxLength.message
           }`,
         });
@@ -168,7 +164,7 @@ describe('TaskService', () => {
         const { property, constraints } = _.get(e, errPath);
         expect(property).toBe('body');
         expect(constraints).toMatchObject({
-          maxLength: `${todoEntityCnf.body.length}${
+          maxLength: `${config.todoEntity.body.length}${
             todo.body.maxLength.message
           }`,
         });

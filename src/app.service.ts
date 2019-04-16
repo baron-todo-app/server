@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ISoftDelete } from 'app.interface';
 import * as R from 'ramda';
-import { Like } from 'typeorm';
+import {IsNull} from 'typeorm';
 
 export { AppService };
 
@@ -11,13 +11,11 @@ class AppService {
    * 論理削除用パラタメタ
    */
   throughDelete(): ISoftDelete {
-    return { deleteAt: null };
+    return { deleteAt: IsNull()};
   }
 
   /**
    * TypeORM 用の like 作成
-   * Like<{bar: '%xxx%'}> になる
-   *
    * %\_ 一文字検索可能
    *
    * @param p
@@ -32,7 +30,6 @@ class AppService {
     const wrap = (w: string) => `%${w}%`;
 
     return R.compose(
-      Like,
       wrap,
       escape,
     )(p);

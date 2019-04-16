@@ -1,19 +1,11 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNotEmpty, IsString, MaxLength, ValidateIf } from 'class-validator';
 import { message } from 'config/message';
+import { config } from 'share/config';
 
 const { todo } = message.entity;
 
-export { todoEntityCnf, TodoEntity };
-
-const todoEntityCnf = {
-  title: {
-    length: 10,
-  },
-  body: {
-    length: 30,
-  },
-};
+export { TodoEntity };
 
 @Entity({
   name: 'todo',
@@ -25,21 +17,21 @@ class TodoEntity {
   @Column({
     type: 'varchar',
     comment: 'todo のタイトル, 概要',
-    length: todoEntityCnf.title.length,
+    length: config.todoEntity.title.length,
     nullable: false,
   })
   @IsNotEmpty({
     message: `${todo.title.isNotEmpty.message}`,
   })
-  @MaxLength(todoEntityCnf.title.length, {
-    message: `${todoEntityCnf.title.length}${todo.title.maxLength.message}`,
+  @MaxLength(config.todoEntity.title.length, {
+    message: `${config.todoEntity.title.length}${todo.title.maxLength.message}`,
   })
   title: string;
 
   @Column({
     type: 'varchar',
     comment: 'todo 補足やメモ',
-    length: todoEntityCnf.body.length,
+    length: config.todoEntity.body.length,
     nullable: true,
     default: '',
   })
@@ -47,8 +39,8 @@ class TodoEntity {
   @IsString({
     message: todo.body.isString.message,
   })
-  @MaxLength(todoEntityCnf.body.length, {
-    message: `${todoEntityCnf.body.length}${todo.body.maxLength.message}`,
+  @MaxLength(config.todoEntity.body.length, {
+    message: `${config.todoEntity.body.length}${todo.body.maxLength.message}`,
   })
   body?: string;
 
