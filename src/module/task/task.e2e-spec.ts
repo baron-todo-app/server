@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import { badRequestException } from './Task.resolvers';
 import { Response } from 'supertest';
 import { todoEntityFixture } from 'config/fixture';
-import { config } from 'share/config';
+import { entity } from 'share/config';
 import { message } from 'config';
 import { TaskObject } from './dto';
 import gql from 'graphql-tag';
@@ -153,7 +153,7 @@ describe('task (e2e)', () => {
       const { property, constraints } = _.get(r, errPath);
       expect(property).toBe('txt');
       expect(constraints).toMatchObject({
-        maxLength: `${config.todoEntity.body.length}${
+        maxLength: `${entity.todo.body.length}${
           freeWord.txt.maxLength.message
           }`,
       });
@@ -183,7 +183,7 @@ describe('task (e2e)', () => {
       const { property, constraints } = _.get(r, errPath);
       expect(property).toBe('title');
       expect(constraints).toMatchObject({
-        maxLength: `${config.todoEntity.title.length}${
+        maxLength: `${entity.todo.title.length}${
           addTask.title.maxLength.message
           }`,
       });
@@ -199,7 +199,7 @@ describe('task (e2e)', () => {
       const { property, constraints } = _.get(r, errPath);
       expect(property).toBe('body');
       expect(constraints).toMatchObject({
-        maxLength: `${config.todoEntity.body.length}${
+        maxLength: `${entity.todo.body.length}${
           addTask.body.maxLength.message
           }`,
       });
@@ -217,13 +217,13 @@ describe('task (e2e)', () => {
       const { property, constraints } = _.get(r, errPath);
       expect(property).toBe('title');
       expect(constraints).toMatchObject({
-        maxLength: `${config.todoEntity.title.length}${
+        maxLength: `${entity.todo.title.length}${
           addTask.title.maxLength.message
           }`,
       });
       expect(r.body.errors[0].message.message[1].property).toBe('body');
       expect(r.body.errors[0].message.message[1].constraints).toMatchObject({
-        maxLength: `${config.todoEntity.body.length}${
+        maxLength: `${entity.todo.body.length}${
           addTask.body.maxLength.message
           }`,
       });

@@ -6,7 +6,7 @@ import { GetTask, FreeWord, UpdateTask } from './dto';
 import { AppService } from 'app.service';
 import * as _ from 'lodash';
 import { message } from 'config/message';
-import { config } from 'share/config';
+import { entity } from 'share/config';
 
 const { todo } = message.entity;
 
@@ -52,7 +52,7 @@ describe('TaskService', () => {
         const { property, constraints } = _.get(e, errPath);
         expect(property).toBe('title');
         expect(constraints).toMatchObject({
-          maxLength: `${config.todoEntity.title.length}${
+          maxLength: `${entity.todo.title.length}${
             todo.title.maxLength.message
           }`,
         });
@@ -84,7 +84,7 @@ describe('TaskService', () => {
         const { property, constraints } = _.get(e, errPath);
         expect(property).toBe('body');
         expect(constraints).toMatchObject({
-          maxLength: `${config.todoEntity.body.length}${
+          maxLength: `${entity.todo.body.length}${
             todo.body.maxLength.message
           }`,
         });
@@ -117,7 +117,7 @@ describe('TaskService', () => {
         const { property, constraints } = _.get(e, errPath);
         expect(property).toBe('title');
         expect(constraints).toMatchObject({
-          maxLength: `${config.todoEntity.title.length}${
+          maxLength: `${entity.todo.title.length}${
             todo.title.maxLength.message
           }`,
         });
@@ -164,7 +164,7 @@ describe('TaskService', () => {
         const { property, constraints } = _.get(e, errPath);
         expect(property).toBe('body');
         expect(constraints).toMatchObject({
-          maxLength: `${config.todoEntity.body.length}${
+          maxLength: `${entity.todo.body.length}${
             todo.body.maxLength.message
           }`,
         });
