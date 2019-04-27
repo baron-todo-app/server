@@ -1,4 +1,3 @@
-/* tslint:disable:max-classes-per-file */
 import { ValidationPipe } from './Validation.pipe';
 import { ArgumentMetadata } from '@nestjs/common';
 import { GetTask } from '../module/task/dto';
@@ -32,7 +31,7 @@ describe('ValidationPipe', () => {
   it('validate対象NG', async () => {
     const metadata: ArgumentMetadata = {
       type: 'param',
-      metatype: GetTask, // todoテスト用に別途準備
+      metatype: GetTask,
       data: '',
     };
     await expect(target.transform(value, metadata)).rejects.toThrow();

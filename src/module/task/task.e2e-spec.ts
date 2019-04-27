@@ -6,12 +6,18 @@ import { badRequestException } from './Task.resolvers';
 import { Response } from 'supertest';
 import { todoEntityFixture } from 'config/fixture';
 import { entity } from 'share/config';
-import { message } from 'config';
+import { message } from 'share/message';
 import { TaskObject } from './dto';
 import gql from 'graphql-tag';
 import { print } from 'graphql/language/printer';
 import { Query, Task, Mutation } from 'share/graphql.type';
-import { getTasksQ, getTaskQ, addTaskQ, deleteTaskQ, updateTaskQ } from 'share/gqlRepository/task';
+import {
+  getTasksQ,
+  getTaskQ,
+  addTaskQ,
+  deleteTaskQ,
+  updateTaskQ,
+} from 'share/gqlRepository/task';
 
 const { freeWord, addTask } = message.dto.task;
 
@@ -155,7 +161,7 @@ describe('task (e2e)', () => {
       expect(constraints).toMatchObject({
         maxLength: `${entity.todo.body.length}${
           freeWord.txt.maxLength.message
-          }`,
+        }`,
       });
     });
   });
@@ -185,7 +191,7 @@ describe('task (e2e)', () => {
       expect(constraints).toMatchObject({
         maxLength: `${entity.todo.title.length}${
           addTask.title.maxLength.message
-          }`,
+        }`,
       });
     });
 
@@ -201,7 +207,7 @@ describe('task (e2e)', () => {
       expect(constraints).toMatchObject({
         maxLength: `${entity.todo.body.length}${
           addTask.body.maxLength.message
-          }`,
+        }`,
       });
     });
 
@@ -219,13 +225,13 @@ describe('task (e2e)', () => {
       expect(constraints).toMatchObject({
         maxLength: `${entity.todo.title.length}${
           addTask.title.maxLength.message
-          }`,
+        }`,
       });
       expect(r.body.errors[0].message.message[1].property).toBe('body');
       expect(r.body.errors[0].message.message[1].constraints).toMatchObject({
         maxLength: `${entity.todo.body.length}${
           addTask.body.maxLength.message
-          }`,
+        }`,
       });
     });
 

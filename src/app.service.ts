@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ISoftDelete } from 'app.interface';
 import * as R from 'ramda';
-import {IsNull} from 'typeorm';
+import { IsNull } from 'typeorm';
 
 export { AppService };
 
@@ -11,7 +11,7 @@ class AppService {
    * 論理削除用パラタメタ
    */
   throughDelete(): ISoftDelete {
-    return { deleteAt: IsNull()};
+    return { deleteAt: IsNull() };
   }
 
   /**

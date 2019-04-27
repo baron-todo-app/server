@@ -33,14 +33,19 @@ class TaskService implements TaskServiceType {
   }
 
   findTasks(p: FreeWord) {
-    const condition = this.makeWare(p)
-    return this.todo.createQueryBuilder()
+    const condition = this.makeWare(p);
+    return (this.todo
+      .createQueryBuilder()
       .where('deleteAt is NUll')
-      .andWhere(new Brackets(qb => {
-        qb.where('title like :title', {title: condition})
-          .orWhere('body like :body', {body: condition});
-      }))
-      .getMany() as any  as TaskObject[];
+      .andWhere(
+        new Brackets(qb => {
+          qb.where('title like :title', { title: condition }).orWhere(
+            'body like :body',
+            { body: condition },
+          );
+        }),
+      )
+      .getMany() as any) as TaskObject[];
   }
 
   async addTask(p: AddTask) {

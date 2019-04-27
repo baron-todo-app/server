@@ -1,6 +1,6 @@
 import { AppService } from './app.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import {IsNull} from 'typeorm';
+import { IsNull } from 'typeorm';
 
 describe('AppService', () => {
   let service: AppService;

@@ -11,7 +11,7 @@ import {
   DeleteTask,
 } from './dto';
 import { ICRUDResolver } from 'module/crudResolver.interface';
-import { message } from 'config/message';
+import { message } from 'share/message';
 
 export { TaskResolver };
 

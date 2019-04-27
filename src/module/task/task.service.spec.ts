@@ -5,7 +5,7 @@ import { TodoEntity } from 'entities/Todo.entity';
 import { GetTask, FreeWord, UpdateTask } from './dto';
 import { AppService } from 'app.service';
 import * as _ from 'lodash';
-import { message } from 'config/message';
+import { message } from 'share/message';
 import { entity } from 'share/config';
 
 const { todo } = message.entity;
@@ -84,9 +84,7 @@ describe('TaskService', () => {
         const { property, constraints } = _.get(e, errPath);
         expect(property).toBe('body');
         expect(constraints).toMatchObject({
-          maxLength: `${entity.todo.body.length}${
-            todo.body.maxLength.message
-          }`,
+          maxLength: `${entity.todo.body.length}${todo.body.maxLength.message}`,
         });
         done();
       }
@@ -164,9 +162,7 @@ describe('TaskService', () => {
         const { property, constraints } = _.get(e, errPath);
         expect(property).toBe('body');
         expect(constraints).toMatchObject({
-          maxLength: `${entity.todo.body.length}${
-            todo.body.maxLength.message
-          }`,
+          maxLength: `${entity.todo.body.length}${todo.body.maxLength.message}`,
         });
         done();
       }

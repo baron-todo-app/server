@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNotEmpty, IsString, MaxLength, ValidateIf } from 'class-validator';
-import { message } from 'config/message';
+import { message } from 'share/message';
 import { entity } from 'share/config';
 
 const { todo } = message.entity;

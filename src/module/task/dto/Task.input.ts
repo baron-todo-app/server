@@ -7,8 +7,8 @@ import {
   ValidateIf,
   IsNotEmpty,
 } from 'class-validator';
-import { message } from 'config';
-import { entity, dto } from 'share/config';
+import { message } from 'share/message';
+import { entity } from 'share/config';
 
 const { getTask, freeWord, addTask } = message.dto.task;
 
@@ -52,8 +52,8 @@ class AddTask {
   @IsString({
     message: addTask.body.isString.message,
   })
-  @MaxLength(dto.task.input.body.length, {
-    message: `${dto.task.input.body.length}${addTask.body.maxLength.message}`,
+  @MaxLength(entity.todo.body.length, {
+    message: `${entity.todo.body.length}${addTask.body.maxLength.message}`,
   })
   body?: string;
 }
@@ -66,8 +66,8 @@ class FreeWord {
   @Field({
     description: '`xxx like %txt%` になる  `txt: ""` で全件取得',
   })
-  @MaxLength(dto.task.input.body.length, {
-    message: `${dto.task.input.body.length}${freeWord.txt.maxLength.message}`,
+  @MaxLength(entity.todo.body.length, {
+    message: `${entity.todo.body.length}${freeWord.txt.maxLength.message}`,
   })
   txt: string;
 }
@@ -95,6 +95,9 @@ class UpdateTask {
   @MaxLength(entity.todo.title.length, {
     message: `${entity.todo.title.length}${addTask.title.maxLength.message}`,
   })
+  @IsNotEmpty({
+    message: `${addTask.title.isNotEmpty.message}`,
+  })
   title: string;
 
   @Field({
@@ -105,8 +108,8 @@ class UpdateTask {
   @IsString({
     message: addTask.body.isString.message,
   })
-  @MaxLength(dto.task.input.body.length, {
-    message: `${dto.task.input.body.length}${addTask.body.maxLength.message}`,
+  @MaxLength(entity.todo.body.length, {
+    message: `${entity.todo.body.length}${addTask.body.maxLength.message}`,
   })
   body?: string;
 }
