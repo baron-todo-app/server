@@ -139,10 +139,10 @@ drop database task; create database task;
 ```
 
 ## url
-- http://localhost:3000/voyager
+- http://localhost:5000/voyager
   - GQL関連全体像
 
-- http://localhost:3000/graphql
+- http://localhost:5000/graphql
   - GQLプレイグラウンド
 
 ## doc
