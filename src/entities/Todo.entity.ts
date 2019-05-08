@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNotEmpty, IsString, MaxLength, ValidateIf } from 'class-validator';
-import { message } from 'share/message';
-import { entity } from 'share/config';
+import { message } from '../share/message'; // migration用に相対パス
+import { entity } from '../share/config'; // migration用に相対パス
 
 const { todo } = message.entity;
 
