@@ -5,7 +5,7 @@ const base = {
   username: 'root',
   password: 'mysql',
   database: 'task',
-  logging: ['query', 'error'],
+  // logging: ['query', 'error'],
   entities: ['src/entities/**.entity{.ts,.js}'],
   migrations: ['migrations/**/*.ts'],
   synchronize: false, // entityと同期するので マイグレーションと相性悪いので無し
