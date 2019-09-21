@@ -11,14 +11,17 @@ git submodule update --init --recursive
 # db のみ起動 して nodeはローカルで dockerのホットリロードが遅いため
 docker-compose up --build -d app_db;  docker-compose ps
 
-# マイグレーションファイル作成
-yarn ts-node $(npm bin)/typeorm migration:generate -n Initialize
+# npm
+yarn 
+
 
 # マイグレーション 実行
 yarn ts-node $(npm bin)/typeorm migration:run
 
 # DB ドキュメント
 docker-compose up app_db schemaspy
+# schemaspy_local exited with code 0
+# ctrl + c
 yarn http-server doc/schemaspy
 
 # コードドキュメント
@@ -28,6 +31,9 @@ yarn http-server doc/compodoc -p 8081
 # test
 yarn test:cov
 yarn http-server doc/coverage/lcov-report -p 8082
+
+# 起動
+yarn start:dev
 
 # GQL
 # http://localhost:5000/voyager
