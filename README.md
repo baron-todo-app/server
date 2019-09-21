@@ -1,9 +1,54 @@
 ## 通常の開発環境
 
+### 初回のみ
 ```bash
 # db のみ起動 して nodeはローカルで dockerのホットリロードが遅いため
 docker-compose up --build -d app_db;  docker-compose ps
+
+# マイグレーションファイル作成
+yarn ts-node $(npm bin)/typeorm migration:generate -n Initialize
+
+# マイグレーション 実行
+yarn ts-node $(npm bin)/typeorm migration:run
+
+# DB ドキュメント
+docker-compose up app_db schemaspy
+yarn http-server doc/schemaspy
+
+# コードドキュメント
+yarn compodoc -p tsconfig.json -d doc/compodoc
+yarn http-server doc/compodoc -p 8081
+
+# test
+yarn test:cov
+yarn http-server doc/coverage/lcov-report -p 8082
+
+# GQL
+# http://localhost:5000/voyager
+# http://localhost:5000/graphql
+
+# DB 
+# http://127.0.0.1:8080
+
+# コードドキュメント
+# http://127.0.0.1:8081
+
+# カバレッジ
+# http://127.0.0.1:8082
+```
+
+### 2回目以降
+```bash
+# db のみ起動 して nodeはローカルで dockerのホットリロードが遅いため
+docker-compose up --build -d app_db;  docker-compose ps
+
+# 起動
 yarn start:dev
+```
+
+## mysql 接続
+```bash
+mysql -uroot -p -h 127.0.0.1
 ```
 
 ## 開発環境でのテスト
@@ -117,9 +162,6 @@ docker stop mysql
 docker exec -it mysql bash
 mysql -uroot -p
 mysql
-
-# mac から
-mysql -uroot -p -h 127.0.0.1
 ```
 
 ## sql memo

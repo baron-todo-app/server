@@ -85,3 +85,5 @@ typings/
 /.idea/
 
 /doc
+/.history
+/dist/

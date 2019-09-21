@@ -31,3 +31,9 @@ bootstrap();
 
 // todo
 // testをする docker
+
+// todo
+// エラー時ログ
+
+// todo
+// 本番モードでは不要な情報はかえさない
