@@ -2,6 +2,12 @@
 
 ### 初回のみ
 ```bash
+
+git clone https://github.com/baron-todo-app/server
+cd server
+git submodule update --init --recursive
+
+
 # db のみ起動 して nodeはローカルで dockerのホットリロードが遅いため
 docker-compose up --build -d app_db;  docker-compose ps
 
