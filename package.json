@@ -52,7 +52,7 @@
     "apollo-boost": "^0.3.1",
     "apollo-server-express": "^2.4.8",
     "class-transformer": "^0.2.0",
-    "class-validator": "^0.9.1",
+    "class-validator": "^0.14.0",
     "concurrently": "^4.1.0",
     "faker": "^4.1.0",
     "graphql": "^14.1.1",
